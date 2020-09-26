@@ -12,6 +12,7 @@ This layout:
 #include "config.h"
 #include "keymap.h"
 #include "process_longpress.h"
+#include "quantum.h"
 
 #define _QW 0
 #define _SH 1
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //
 
   [_QW] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       DRZ_LCK,  KC_ESC,   DRZ___1,  DRZ___2,  DRZ___3,  DRZ___4,  DRZ___5,  TO(_MC),  DRZ___6,  DRZ___7,  DRZ___8,  DRZ___9,  DRZ___0,  KC_ESC,   DRZ_LCK,
       MO(_FN),  KC_LGUI,  DRZ___Q,  DRZ___W,  DRZ___E,  DRZ___R,  DRZ___T,  XXXXXXX,  DRZ___Y,  DRZ___U,  DRZ___I,  DRZ___O,  DRZ___P,  KC_RGUI,  MO(_FN),
       MO(_L3),  KC_LALT,  DRZ___A,  DRZ___S,  DRZ___D,  DRZ___F,  DRZ___G,  XXXXXXX,  DRZ___H,  DRZ___J,  DRZ___K,  DRZ___L,  DRZ_CLN,  KC_RALT,  MO(_L3),
@@ -93,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //FN LAYER
   //KLE url: http://www.keyboard-layout-editor.com/#/gists/ea5fd62e5090bfd1ace06bb00ebc35b5
   [_FN] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  KC_MUTE,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    RESET,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_MUTE,  _______,
       _______,  XXXXXXX,  KC_F11,   KC_F12,   KC_F13,   KC_F14,   KC_F15,   XXXXXXX,  KC_F16,   KC_F17,   KC_F18,   KC_F19,   KC_F20,   XXXXXXX,  _______,
       _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //LAYER 2
   //KLE url: http://www.keyboard-layout-editor.com/#/gists/873f4eb3c290906364daf000cb132b69
   [_L2] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  _______,  DRZ_TIL,  XXXXXXX,  DRZ_APS,  DRZ_QOT,  DRZ_PLS,  _______,  DRZ_MNS,  DRZ_SQT,  DRZ_UDS,  DRZ_UDS,  DRZ_EQU,  _______,  _______,
       _______,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DRZ_ASL,  DRZ_SBL,  _______,  DRZ_SBR,  DRZ_SLA,  XXXXXXX,  XXXXXXX,  XXXXXXX,  _______,  _______,
       _______,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DRZ_LES,  DRZ_LPR,  _______,  DRZ_RPR,  DRZ_SUP,  XXXXXXX,  XXXXXXX,  DRZ_EXC,  _______,  _______,
@@ -115,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //LAYER 3
   //KLE url: http://www.keyboard-layout-editor.com/#/gists/6ee8724672840abd6863985fa9fe7014
   [_L3] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  _______,  XXXXXXX,  DRZ_USQ,  DRZ_UST,  XXXXXXX, XXXXXXX,   _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DRZ_MNS,  _______,  _______,
       _______,  _______,  XXXXXXX,  XXXXXXX,  DRZ_EUR,  XXXXXXX, DRZ_ASL,   _______,  DRZ_SLA,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DRZ_PLS,  _______,  _______,
       _______,  _______,  XXXXXXX,  DRZ_DLR,  DRZ_DEG,  XXXXXXX, DRZ_LES,   _______,  DRZ_SUP,  XXXXXXX,  XXXXXXX,  DRZ_PND,  DRZ_AST,  _______,  _______,
@@ -126,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //MINECRAFT/GAME LAYER
   //KLE url: http://www.keyboard-layout-editor.com/#/gists/
   [_MC] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       TO(_QW),  KC_ESC,   DRZ___1,  DRZ___2,  DRZ___3,  DRZ___4,  DRZ___5,  TO(_QW),  DRZ___6,  DRZ___7,  DRZ___8,  DRZ___9,  DRZ___0,  KC_ESC,   TO(_QW),
       MO(_MF),  KC_LGUI,  XXXXXXX,  DRZ___W,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_RGUI,  MO(_MF),
       MO(_L3),  KC_LALT,  DRZ___A,  DRZ___S,  DRZ___D,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_RALT,  MO(_M3),
@@ -134,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       DRZ__SH,  KC_LCTL,  KC_LEAD,  DRZ__EM,  KC_MENU,  KC_TAB,   DRZ_SPA,  DRZ_ENT,  DRZ_SPA,  DRZ_BSP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_RCTL,  DRZ__SH
     ),
   [_M2] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
@@ -142,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
     ),
   [_M3] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
@@ -150,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
     ),
   [_MF] =
-    KEYMAP(
+    LAYOUT_ortho_5x15(
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
@@ -624,7 +625,8 @@ bool process_overides(uint16_t keycode, keyrecord_t *record) {
   return returnValue;
 }
 
-bool process_rgb(uint16_t keycode, keyrecord_t *record) {
+bool process_rgb_user(const uint16_t keycode, const keyrecord_t *record) {
+
 
   //bool returnValue = true;
   //uint16_t h = rgblight_get_hue();
@@ -664,8 +666,10 @@ bool process_rgb(uint16_t keycode, keyrecord_t *record) {
   } else if(IS_RELEASED(record->event)) {
     layer_state_set_user(_state);
   }
+
   return true;
 }
+
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -682,7 +686,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     returnValue = false;
   }
 
-  if(!process_rgb(keycode, record)) {
+  if(!process_rgb_user(keycode, record)) {
     returnValue = false;
   }
 

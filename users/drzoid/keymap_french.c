@@ -1,5 +1,8 @@
 //French hex mapping by Youdroid https://github.com/youdroid/qmk_firmware/tree/abfede6fac015305ab03b832ffc962b5da6c8396/keyboards/xd75/keymaps/french
 
+#ifndef _KEYMAP_FRENCH_H_
+#define _KEYMAP_FRENCH_H_
+
 enum french_key {
 
 	FR_EMPT			= 0x00,
@@ -156,3 +159,5 @@ enum french_media_key{
     	FR_MEDIA_FAST_FORWARD,
     	FR_MEDIA_REWIND		/* 0xBC */
 };
+
+#endif

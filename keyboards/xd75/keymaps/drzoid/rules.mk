@@ -23,3 +23,4 @@ endif
 
 SWAP_HANDS_ENABLE = yes
 LONGPRESS_ENABLE = yes
+LEADER_ENABLE = yes

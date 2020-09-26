@@ -239,3 +239,6 @@
 #endif
 
 #endif
+
+// I don't know why, but this is making an error disappear at linking the hex file
+#define SLEEP_LED_TIMER 3
