@@ -17,5 +17,9 @@ ifndef QUANTUM_DIR
 	include ../../../../Makefile
 endif
 
-UNICODE_ENABLE = yes
-UCIS_ENABLE = no         # Unicode
+ifdef DRZ_USE_UNICODE
+  UNICODE_ENABLE = yes
+endif
+
+SWAP_HANDS_ENABLE = yes
+LONGPRESS_ENABLE = yes

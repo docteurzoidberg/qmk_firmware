@@ -19,26 +19,34 @@
 
 #include "../../config.h"
 
-// place overrides here
-
-#ifdef MANUFACTURER
-  #undef MANUFACTURER
-  #define MANUFACTURER drzoid
-#endif
+#undef  RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 
 //Comment/uncomment based on OS setup
-//#define DRZ_AZERTY_FR_OS  // Qwerty keycaps & layout with Azerty French OS */
-#define DRZ_QWERTY_INTL_OS  // Qwerty keycaps & layout with Qwerty Intl OS */
+//#define DRZ_AZERTY_FR_OS        // Qwerty keycaps & layout with Azerty French OS */
+#define DRZ_QWERTY_INTL_OS    // Qwerty keycaps & layout with Qwerty Intl OS */
 
+#define DRZ_USE_UNICODE
+#define LONGPRESS_ENABLE
+
+#define LEADER_TIMEOUT 1000
 
 #define _______ KC_TRNS
 #define ___T___ KC_TRNS
 #define XXXXXXX KC_NO
 
+
 //Unicode chars
-#define DRZ_UC_STAR     RALT(UC(0x2605))    // ★
-#define DRZ_UC_SQUARE   RALT(UC(0x00B2))    // ²
-#define DRZ_UC_CUBE     RALT(UC(0x00B3))    // ³
+#ifdef DRZ_USE_UNICODE
+  #define DRZ_UC_STAR     KC_NO
+  #define DRZ_UC_SQUARE   KC_NO
+  #define DRZ_UC_CUBE     KC_NO
+#else
+  #define DRZ_UC_STAR     KC_NO
+  #define DRZ_UC_SQUARE   KC_NO
+  #define DRZ_UC_CUBE     KC_NO
+#endif
 
 //uni-sized keycodes for keymap uses
 #define DRZ_ENT  KC_ENTER
@@ -49,22 +57,22 @@
 #define DRZ_UCU  DRZ_UC_CUBE
 #define DRZ_LCK  DRZ_LOCK
 #define DRZ__ST  LSFT(KC_TAB)
-#define DRZ__SH  DRZ_SWAP_HANDS
+#define DRZ__SH  SH_TT
 #define DRZ__LS  KC_LSHIFT
 #define DRZ__RS  KC_RSHIFT
 #define DRZ__AC  DRZ_ACCENTS_TAPDANCE
 #define DRZ__EM  DRZ_EMOJIS_TAPDANCE
 #define DRZ__CA  LCTL(KC_LALT)
 #define DRZ__CS  LCTL(KC_LSHIFT)
-#define DRZ__EU  LCTL(RALT(KC_E))
 #define DRZ_MCS  M(DRZ_MACRO_COMMENT_START)
 #define DRZ_MCE  M(DRZ_MACRO_COMMENT_END)
-
+#define DRZ_TST  M(DRZ_MACRO_TEST_SENDSTRING)
+#define DRZ_EVE  M(DRZ_MACRO_EVE)
+#define DRZ_ATB  LALT(KC_TAB)
 
 /*\ ------------------------------------------------------*/
 //  QWERTY KEYMAP ON QWERTY INTL OS !
 /*\-------------------------------------------------------*/
-
 
 #ifdef DRZ_QWERTY_INTL_OS
 
@@ -113,9 +121,13 @@
   #define DRZ_EQU KC_EQL
   #define DRZ_UDS KC_UNDS
   #define DRZ_SLA KC_SLASH
-  #define DRZ_DLR KC_DLR
-  #define DRZ_SUP KC_LABK       //  > (superior)
-  #define DRZ_LES KC_RABK       //  < (inferior)
+
+  #define DRZ_DLR LSFT(KC_4)
+  #define DRZ_DOT KC_DOT
+  #define DRZ_COM LSFT(KC_LABK)
+
+  #define DRZ_SUP KC_RABK       //  > (superior)
+  #define DRZ_LES KC_LABK       //  < (inferior)
   #define DRZ_SCL KC_SCLN
   #define DRZ_CLN KC_COLN
   #define DRZ_TIL KC_TILD
@@ -133,6 +145,10 @@
   #define DRZ_RPR KC_RPRN
   #define DRZ_APS KC_QUOT       // '
   #define DRZ_QOT KC_DQT        // "
+
+  #define DRZ_PND RALT(LSFT(KC_4))
+  #define DRZ_DEG RALT(LSFT(KC_SCLN))
+  #define DRZ_EUR RALT(KC_5)
 #endif
 
 /*\ ------------------------------------------------------*/
@@ -141,7 +157,10 @@
 
 #ifdef DRZ_AZERTY_FR_OS
 
-  #include "keymap_french.h"
+  #ifndef __ASSEMBLER__
+    //French hex mapping by Youdroid
+    #include "keymap_french.c"
+  #endif
 
   //Azerty's FR single num keys
   #define DRZ___1   FR_1
@@ -184,6 +203,7 @@
   #define DRZ___M   FR_M
 
   //Azerty's FR single keys
+  #define DRZ_DOT   FR_DOT        //  .
   #define DRZ_SCL   FR_SCLN       //  ,
   #define DRZ_CLN   FR_COLN       //  ;
   #define DRZ_APS   FR_APOS       //  '
@@ -195,8 +215,8 @@
   #define DRZ_EXC   FR_EXCL       //  !
   #define DRZ_SLA   FR_SLSH       //  /
   #define DRZ_AST   FR_AST        //  *
-  #define DRZ_MNS   FR_PLUS       //  +
-  #define DRZ_PLS   FR_MINS       //  -
+  #define DRZ_PLS   FR_PLUS       //  +
+  #define DRZ_MNS   FR_MINS       //  -
   #define DRZ_DLR   FR_DLR        //  $
   #define DRZ_LES   FR_LESS       //  <
 
@@ -207,11 +227,14 @@
   #define DRZ_CBL   RALT(FR_APOS) //  { (curly bracket left)
   #define DRZ_CBR   RALT(FR_EQUA) //  } (curly bracket right)
   #define DRZ_PIP   RALT(KC_6)    //  | (pipe)
-  #define DRZ_INT   LSFT(FR_COMM) //  ? (interrogation mark)
-  #define DRZ_SQT   RALT(FR_EGRV) //  ` (special quote ?)
-  #define DRZ_ASL   LALT(FR_UNDS) //  \ (antislash)
-  #define DRZ_SUP   LSFT(FR_LESS) //  > (superior)
+  #define DRZ_SQT   RALT(FR_7)    //  ` (special quote ?)
+  #define DRZ_ASL   RALT(KC_8)    //  \ (antislash)
 
+  #define DRZ_INT   LSFT(FR_COMM) //  ? (interrogation mark)
+  #define DRZ_SUP   LSFT(FR_LESS) //  > (superior)
+  #define DRZ_DEG   LSFT(FR_RPAR) //  °
+  #define DRZ_PND   LSFT(FR_DLR)  //  £
+  #define DRZ_EUR   LCTL(RALT(KC_E))
 
 #endif
 
